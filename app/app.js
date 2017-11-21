@@ -18,7 +18,7 @@ var mongoose = require("mongoose");
 var passport = require("passport");
 var bodyParser = require("body-parser");
 var User  = require("./models/user");
-var localStrategy = require("passport-local");
+var LocalStrategy = require("passport-local");
 var passportLocalMongoose = require("passport-local-mongoose");
 
 mongoose.connect("mongodb://localhost/auth_demo_block", {
@@ -42,6 +42,7 @@ app.use(bodyParser.urlencoded({
 app.use(passport.initialize());
 app.use(passport.session());
 
+passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
