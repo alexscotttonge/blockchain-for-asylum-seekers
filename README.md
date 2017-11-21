@@ -1,7 +1,19 @@
 # Blockchain for the Nameless
 Creating a verifiable identity for refugees and asylum seekers using the blockchain.
 
-### Testing
+### How to Run
+1. Install Node.js.
+
+2. Install truffle testing framework and testrpc, a Node.js based Ethereum client used for development.
+```
+npm install -g ethereumjs-testrpc
+npm install -g truffle
+```
+
+3. Install the node dependencies.
+```
+npm install
+```
 
 
 
