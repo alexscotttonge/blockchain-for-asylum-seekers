@@ -1,11 +1,11 @@
 # BLOCKCHAIN FOR NAMELESS
 --
 
-## Testing
-- Tru
+### Testing
 
 
-## Tech Stack
+
+### Tech Stack
 
 :computer: Ethereum
 
