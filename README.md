@@ -1,4 +1,4 @@
-# BLOCKCHAIN FOR NAMELESS
+# Blockchain for the Nameless
 Creating a verifiable identity for refugees and asylum seekers using the blockchain.
 
 ### Testing
