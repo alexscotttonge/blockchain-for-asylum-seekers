@@ -19,7 +19,7 @@ Creating a verifiable identity for refugees and asylum seekers using the blockch
 
 
 ### Team Members
-Ainsley Chang
-Alex Scott-Tonge
-Canace Wong
-Pablo Vidal
+- Ainsley Chang
+- Alex Scott-Tonge
+- Canace Wong
+- Pablo Vidal
