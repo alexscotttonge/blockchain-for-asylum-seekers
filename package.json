@@ -3,9 +3,10 @@
   "version": "0.0.0",
   "private": true,
   "description": "Creating a verifiable identity for refugees and asylum seekers using the blockchain.",
-  "scripts": {
-    "start": "node ./app/bin/www"
-  },
+    "scripts": {
+      "test": "NODE_ENV=test mocha --exit --recursive",
+      "start": "node ./app/bin/www"
+    },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/alexscotttonge/blockchain-for-asylum-seekers.git"
