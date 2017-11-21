@@ -4,7 +4,8 @@
   "private": true,
   "description": "Creating a verifiable identity for refugees and asylum seekers using the blockchain.",
   "scripts": {
-    "start": "node ./app/bin/www"
+    "start": "node ./app/bin/www",
+    "test": "mocha"
   },
   "repository": {
     "type": "git",
