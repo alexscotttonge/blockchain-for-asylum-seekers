@@ -1,14 +1,22 @@
+'use strict';
+
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var mongoose = require('mongoose');
+
+const applicant = require('./models/applicant');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
+var applicants = require('./routes/applicants');
+
 
 var app = express();
+var env = app.get('env');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -22,8 +30,11 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+
 app.use('/', index);
 app.use('/users', users);
+app.use('/applicants', applicants);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -41,6 +52,27 @@ app.use(function(err, req, res, next) {
   // render the error page
   res.status(err.status || 500);
   res.render('error');
+});
+
+var databaseURI = 'mongodb://localhost/blockchainz-' + env;
+mongoose.Promise = global.Promise;
+mongoose
+  .connect(databaseURI, {
+   useMongoClient: true
+ })
+  .then(function() {
+     console.log('connected to database ' + databaseURI);
+   },
+   function(err) {
+     console.log('unable to establish a connection');
+   }
+ );
+
+process.on('SIGINT', function() {
+ mongoose.disconnect(function() {
+   console.log('disconnected from database on app termination');
+   process.exit(0);
+ });
 });
 
 module.exports = app;

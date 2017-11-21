@@ -2,7 +2,7 @@
 
 const Browser = require('zombie');
 const http = require('http');
-const expect = require('chai');
+const expect = require('chai').expect;
 const app = require('../../app/app');
 
 describe('add applicant', function() {
