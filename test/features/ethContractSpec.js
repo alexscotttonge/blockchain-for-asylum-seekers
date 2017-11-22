@@ -6,7 +6,7 @@ const expect = require('chai').expect;
 const app = require('../../app/app');
 const mongoose = require('mongoose');
 var Application = mongoose.model('application');
-var Identity = mongoose.model('identity');
+var EthAccount = mongoose.model('ethAccount');
 
 describe('blockchain identity contract', function () {
   
@@ -42,8 +42,8 @@ describe('blockchain identity contract', function () {
     Application.findOne({
       applicantName: 'John Doe'
     }).exec(function (err, app) {
-      Identity.findOne({
-        owner: app
+      EthAccount.findOne({
+        applicationId: app
       }).exec(function (err, addr) {
         expect(addr.contractAddress.length).to.equal(42);
         done();

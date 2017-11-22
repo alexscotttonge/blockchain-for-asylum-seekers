@@ -7,7 +7,7 @@
   <div>
     <p>Name: {{this.applicantName}}</p>
     <p>D.O.B.: {{this.applicantDob}}</p>
-    <form method="post" action="/identities">
+    <form method="post" action="/ethAccounts">
       <input type="hidden" name="application" value="{{this._id}}">
       <button type="submit">Verify</button>
     </form>

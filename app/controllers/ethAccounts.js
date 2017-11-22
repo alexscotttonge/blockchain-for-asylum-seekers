@@ -2,7 +2,7 @@
 
 var mongoose = require('mongoose')
 var Application = mongoose.model('application');
-var Identity = mongoose.model('identity');
+var EthAccount = mongoose.model('ethAccount');
 var Web3 = require('web3');
 var fs = require('fs');
 const solc = require('solc');
@@ -17,12 +17,12 @@ module.exports = {
       application = app
       account = await createAccount();
       contract = await deployContract(account, application);  
-      var newIdentity = new Identity({
-        owner: application,
+      var newEthAccount = new EthAccount({
+        applicationId: application,
         accountAddress: account,
         contractAddress: contract
       });
-      newIdentity.save()
+      newEthAccount.save()
         .then(item => {
           res.redirect('/applications');
         })

@@ -9,7 +9,7 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 
 const applicant = require('./models/application');
-const identity = require('./models/identity');
+const ethAccount = require('./models/ethAccount');
 
 var routes = require('./routes');
 

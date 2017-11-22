@@ -21,7 +21,7 @@ router.get('/applications', isLoggedIn, applications.index);
 router.post('/applications', isLoggedIn, applications.create);
 router.get('/applications/new', isLoggedIn, applications.new);
 
-router.post('/identities', ethAccounts.create);
+router.post('/ethAccounts', ethAccounts.create);
 
 function isLoggedIn(req, res, next){
   if(req.isAuthenticated()){

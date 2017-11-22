@@ -3,10 +3,10 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-var identitySchema = new Schema({
-  owner: {
+var ethAccountSchema = new Schema({
+  applicationId: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'applicants'
+    ref: 'application'
   },
   accountAddress: String,
   contractAddress: String
@@ -14,4 +14,4 @@ var identitySchema = new Schema({
     timestamps: true
 })
 
-mongoose.model('identity', identitySchema)
+mongoose.model('ethAccount', ethAccountSchema)
