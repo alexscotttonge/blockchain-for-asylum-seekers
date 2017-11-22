@@ -10,7 +10,7 @@ var users = require('./routes/users');
 var login = require('./routes/login');
 var secret = require('./routes/secret');
 var register = require('./routes/register');
-
+var logout = require('./routes/logout');
 
 
 
@@ -61,6 +61,7 @@ app.use('/users', users);
 app.use('/login', login);
 app.use('/secret', secret);
 app.use('/register', register);
+app.use('/logout', logout);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
