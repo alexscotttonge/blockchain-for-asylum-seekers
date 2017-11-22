@@ -14,6 +14,7 @@ describe('Home page', function() {
   before(function(done) {
     this.server = http.createServer(app).listen(3001);
     browser.visit('/', done);
+
   })
 
 
@@ -27,8 +28,11 @@ describe('Home page', function() {
     expect(browser.assert.link('a', 'logout', '/logout'));
   });
 
+
+
   it('redirects to the register page when you click on signup', function(done) {
-    browser.clickLink('Sign up here !', done);s
+    browser.clickLink('Sign up here !', done);
+    console.log('hello' + browser.html('body'))
     expect(browser.html('body')).to.contain('Sign Up form');
   })
 
