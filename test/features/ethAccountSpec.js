@@ -8,7 +8,7 @@ const mongoose = require('mongoose');
 var Applicant = mongoose.model('applicants');
 var Identities = mongoose.model('identities');
 
-describe('blockchain address', function () {
+describe('ethereum account', function () {
   
   Browser.localhost('example.com', 3001)
   var browser = new Browser();
@@ -31,7 +31,7 @@ describe('blockchain address', function () {
     browser.pressButton('Verify', done);
   })
 
-  it('creates a new ethereum address', function (done) {
+  it('creates a new ethereum account', function (done) {
     Applicant.findOne({
       applicantName: 'John Doe'
     }).exec(function (err, app) {
