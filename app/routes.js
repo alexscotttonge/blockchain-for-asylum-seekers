@@ -17,9 +17,9 @@ router.get('/sessions/logout', sessions.delete);
 router.get('/users/new', users.new);
 router.post('/users', users.create);
 
-router.get('/applicants', isLoggedIn, applications.index);
-router.post('/applicants', isLoggedIn, applications.create);
-router.get('/applicants/new', isLoggedIn, applications.new);
+router.get('/applications', isLoggedIn, applications.index);
+router.post('/applications', isLoggedIn, applications.create);
+router.get('/applications/new', isLoggedIn, applications.new);
 
 router.post('/identities', ethAccounts.create);
 

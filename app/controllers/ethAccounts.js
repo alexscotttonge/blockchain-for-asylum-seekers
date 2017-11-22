@@ -1,8 +1,8 @@
 'use strict';
 
 var mongoose = require('mongoose')
-var Applicant = mongoose.model('applicants');
-var Identity = mongoose.model('identities');
+var Application = mongoose.model('application');
+var Identity = mongoose.model('identity');
 var Web3 = require('web3');
 var fs = require('fs');
 const solc = require('solc');
@@ -10,25 +10,24 @@ const solc = require('solc');
 module.exports = {
 
   create: function (req, res, next) {
-    var applicant;
+    var application;
     var contract;
     var account;
-    Applicant.findById(req.body.applicant, async function (err, app) {
-      applicant = app
+    Application.findById(req.body.application, async function (err, app) {
+      application = app
       account = await createAccount();
-      contract = await deployContract(account, applicant);  
+      contract = await deployContract(account, application);  
       var newIdentity = new Identity({
-        owner: applicant,
+        owner: application,
         accountAddress: account,
         contractAddress: contract
       });
       newIdentity.save()
         .then(item => {
-          res.redirect('/applicants');
-          console.log('yes!')
+          res.redirect('/applications');
         })
         .catch(err => {
-          res.render('applicants');
+          res.render('applications');
         })
     })
   }
@@ -41,7 +40,7 @@ function createAccount() {
   return newAccount.address;
 }
 
-async function deployContract(owner, applicant) {
+async function deployContract(owner, application) {
   var web3 = new Web3();
   var contract;
   var contractAddress;
@@ -57,7 +56,7 @@ async function deployContract(owner, applicant) {
   await contract
     .deploy({
       data: '0x' + bytecode,
-      arguments: [owner, applicant.applicantName, applicant.applicantDob]
+      arguments: [owner, application.applicantName, application.applicantDob]
     })
     .send({
       from: account,

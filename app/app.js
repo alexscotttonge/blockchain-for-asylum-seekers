@@ -8,8 +8,8 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 
-const applicant = require('./models/applicants');
-const identity = require('./models/identities');
+const applicant = require('./models/application');
+const identity = require('./models/identity');
 
 var routes = require('./routes');
 

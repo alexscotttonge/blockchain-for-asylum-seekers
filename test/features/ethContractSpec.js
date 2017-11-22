@@ -5,8 +5,8 @@ const http = require('http');
 const expect = require('chai').expect;
 const app = require('../../app/app');
 const mongoose = require('mongoose');
-var Applicant = mongoose.model('applicants');
-var Identities = mongoose.model('identities');
+var Application = mongoose.model('application');
+var Identity = mongoose.model('identity');
 
 describe('blockchain identity contract', function () {
   
@@ -14,11 +14,11 @@ describe('blockchain identity contract', function () {
   var browser = new Browser();
 
   before(function (done) {
-    var newApplicant = new Applicant({
+    var newApplication = new Application({
       applicantName: 'John Doe',
       applicantDob: '01/01/1977'
     });
-    newApplicant
+    newApplication
       .save(done)
   })
 
@@ -39,10 +39,10 @@ describe('blockchain identity contract', function () {
   })
 
   it('creates a new ethereum address', function (done) {
-    Applicant.findOne({
+    Application.findOne({
       applicantName: 'John Doe'
     }).exec(function (err, app) {
-      Identities.findOne({
+      Identity.findOne({
         owner: app
       }).exec(function (err, addr) {
         expect(addr.contractAddress.length).to.equal(42);

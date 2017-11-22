@@ -11,7 +11,7 @@ module.exports = {
   },
 
   create: passport.authenticate("local", {
-    successRedirect: "/applicants/new",
+    successRedirect: "/applications/new",
     failureRedirect: "/login"
   }), function(req, res) {
   

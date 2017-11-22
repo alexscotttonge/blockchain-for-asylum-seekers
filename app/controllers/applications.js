@@ -1,30 +1,30 @@
 'use strict';
 
 var mongoose = require('mongoose')
-var Applicant = mongoose.model('applicants');
+var Application = mongoose.model('application');
 
 module.exports = {
 
   new: function (req, res, next) {
-    res.render('applicants/new');
+    res.render('applications/new');
   },
 
   create: function(req, res, next) {
-    var newApplicant = new Applicant(req.body) ;
-    newApplicant.save()
+    var newApplication = new Application(req.body) ;
+    newApplication.save()
       .then(item => {
-        res.redirect('/applicants');
+        res.redirect('/applications');
       })
       .catch(err => {
-        res.render('applicants/new');
+        res.render('applications/new');
     })
   },
 
   index: function(req, res, next) {
-    Applicant
+    Application
       .find()
       .exec(function(err, doc) {
-        res.render('applicants/index', { applicants: doc });
+        res.render('applications/index', { applications: doc });
       })
   }
 

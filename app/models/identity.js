@@ -14,4 +14,4 @@ var identitySchema = new Schema({
     timestamps: true
 })
 
-mongoose.model('identities', identitySchema)
+mongoose.model('identity', identitySchema)

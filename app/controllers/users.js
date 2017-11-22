@@ -25,7 +25,7 @@ module.exports = {
         return res.render('users/new');
       }
       passport.authenticate("local")(req, res, function() {
-        res.redirect("/applicants");
+        res.redirect("/applications");
       });
     });
   }

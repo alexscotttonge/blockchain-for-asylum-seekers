@@ -5,8 +5,8 @@ const http = require('http');
 const expect = require('chai').expect;
 const app = require('../../app/app');
 const mongoose = require('mongoose');
-var Applicant = mongoose.model('applicants');
-var Identities = mongoose.model('identities');
+var Application = mongoose.model('application');
+var Identity = mongoose.model('identity');
 
 describe('ethereum account', function () {
   
@@ -14,11 +14,11 @@ describe('ethereum account', function () {
   var browser = new Browser();
 
   before(function (done) {
-    var newApplicant = new Applicant({
+    var newApplication = new Application({
       applicantName: 'John Doe',
       applicantDob: '01/01/1977'
     });
-    newApplicant
+    newApplication
       .save(done)
   })
 
@@ -40,10 +40,10 @@ describe('ethereum account', function () {
   })
 
   it('creates a new ethereum account', function (done) {
-    Applicant.findOne({
+    Application.findOne({
       applicantName: 'John Doe'
     }).exec(function (err, app) {
-      Identities.findOne({
+      Identity.findOne({
         owner: app
       }).exec(function (err, addr) {
         expect(addr.accountAddress.length).to.equal(42);
