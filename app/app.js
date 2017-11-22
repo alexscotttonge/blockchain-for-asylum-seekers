@@ -13,6 +13,26 @@ const identity = require('./models/identities');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
+
+var login = require('./routes/login');
+var secret = require('./routes/secret');
+var register = require('./routes/register');
+var logout = require('./routes/logout');
+
+
+
+var mongoose = require("mongoose");
+var passport = require("passport");
+var bodyParser = require("body-parser");
+var User  = require("./models/user");
+var LocalStrategy = require("passport-local");
+var passportLocalMongoose = require("passport-local-mongoose");
+
+mongoose.connect("mongodb://localhost/auth_demo_block", {
+  useMongoClient: true
+});
+mongoose.Promise = global.Promise;
+
 var applicants = require('./routes/applicants');
 var identities = require('./routes/identities');
 
@@ -20,23 +40,45 @@ var identities = require('./routes/identities');
 var app = express();
 var env = app.get('env');
 
+app.use(require("express-session")({
+  secret: "This is a random sentence",
+  resave: false,
+  saveUninitialized: false
+}));
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({
+  extended: false
+}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 
 app.use('/', index);
 app.use('/users', users);
+
+app.use('/login', login);
+app.use('/secret', secret);
+app.use('/register', register);
+app.use('/logout', logout);
 app.use('/applicants', applicants);
 app.use('/identities', identities);
+
 
 
 // catch 404 and forward to error handler
