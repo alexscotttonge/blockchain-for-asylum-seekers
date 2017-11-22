@@ -28,8 +28,7 @@ describe('Home page', function() {
   });
 
   it('redirects to the register page when you click on signup', function(done) {
-    browser.clickLink('Sign up here !', done);
-    console.log('hello' + browser.html('body'))
+    browser.clickLink('Sign up here !', done);s
     expect(browser.html('body')).to.contain('Sign Up form');
   })
 
