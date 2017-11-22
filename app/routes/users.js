@@ -6,7 +6,7 @@ var LocalStrategy = require("passport-local");
 var  passportLocalMongoose = require("passport-local-mongoose");
 
 router.get('/new', function(req, res) {
-  res.render('register', {
+  res.render('users/new', {
     title: 'Sign Up form '
   });
 });
@@ -19,7 +19,7 @@ router.post('/', function(req, res) {
   }), req.body.password, function(err, user) {
     if (err) {
       console.log(err);
-      return res.render('register');
+      return res.render('users/new');
     }
     passport.authenticate("local")(req, res, function() {
       res.redirect("/applicants");
