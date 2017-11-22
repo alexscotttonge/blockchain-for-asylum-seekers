@@ -1,30 +1,12 @@
 var express = require('express');
 var router = express.Router();
-var mongoose = require('mongoose')
-var Applicant = mongoose.model('applicants');
+var applicationsController = require('../controllers/applications')
 
-router.get('/new', isLoggedIn, function(req, res, next) {
-  res.render('applicants/new');
-});
+router.get('/new', isLoggedIn, applicationsController.new);
 
-router.post('/', function(req, res, next) {
-  var newApplicant = new Applicant(req.body) ;
-  newApplicant.save()
-    .then(item => {
-      res.redirect('/applicants');
-    })
-    .catch(err => {
-      res.render('applicants/new');
-  })
-});
+router.post('/', isLoggedIn, applicationsController.create);
 
-router.get('/', isLoggedIn, function(req, res, next) {
-  Applicant
-    .find()
-    .exec(function(err, doc) {
-      res.render('applicants/index', { applicants: doc });
-    })
-});
+router.get('/', isLoggedIn, applicationsController.index);
 
 function isLoggedIn(req, res, next){
   if(req.isAuthenticated()){
@@ -32,6 +14,5 @@ function isLoggedIn(req, res, next){
   }
   res.redirect("/login");
 }
-
 
 module.exports = router;
