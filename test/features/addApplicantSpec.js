@@ -13,7 +13,30 @@ describe('add applicant', function() {
 
   before(function(done) {
     this.server = http.createServer(app).listen(3001);
-    browser.visit('/applicants/new', done);
+    browser.visit('/', done);
+  })
+
+  before(function(done) {
+    browser.clickLink('Sign up here !', done)
+  })
+
+  before(function(done) {
+    browser
+      .fill('username', 'Josephine')
+      .fill('password', 'HelloWorld')
+      .pressButton('Sign up', done)
+  })
+
+  before(function(done) {
+    browser
+      .fill('username', 'Josephone')
+      .fill('password', 'HelloWorld')
+      .pressButton('Login', done)
+  })
+
+  before(function(done) {
+    browser
+      .visit('/applicants/new', done);
   })
 
   before(function(done) {

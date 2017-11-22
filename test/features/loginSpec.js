@@ -28,14 +28,6 @@ describe('Home page', function() {
     expect(browser.assert.link('a', 'logout', '/logout'));
   });
 
-
-  //
-  // it('redirects to the register page when you click on signup', function(done) {
-  //   browser.clickLink('Sign up here !', done);
-  //   expect(browser.html('body')).to.contain('Sign Up form');
-  // })
-
-
   after(function(done) {
     this.server.close();
     mongoose.connection.db.dropDatabase(done);
