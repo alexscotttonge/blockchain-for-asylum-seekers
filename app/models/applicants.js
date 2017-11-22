@@ -10,4 +10,4 @@ var applicantSchema = new Schema({
   timestamps: true
 });
 
-mongoose.model('applicant', applicantSchema)
+mongoose.model('applicants', applicantSchema)

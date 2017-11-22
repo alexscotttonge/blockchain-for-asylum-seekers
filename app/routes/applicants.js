@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose')
-var Applicant = mongoose.model('applicant');
+var Applicant = mongoose.model('applicants');
 
 /* GET home page. */
 router.get('/new', function(req, res, next) {
