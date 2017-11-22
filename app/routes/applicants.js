@@ -4,7 +4,7 @@ var mongoose = require('mongoose')
 var Applicant = mongoose.model('applicants');
 
 /* GET home page. */
-router.get('/new', function(req, res, next) {
+router.get('/new', isLoggedIn, function(req, res, next) {
   res.render('applicants/new');
 });
 
@@ -19,13 +19,20 @@ router.post('/', function(req, res, next) {
   })
 });
 
-router.get('/', function(req, res, next) {
+router.get('/', isLoggedIn, function(req, res, next) {
   Applicant
     .find()
     .exec(function(err, doc) {
       res.render('applicants/index', { applicants: doc });
     })
 });
+
+function isLoggedIn(req, res, next){
+  if(req.isAuthenticated()){
+    return next();
+  }
+  res.redirect("/login");
+}
 
 
 module.exports = router;
