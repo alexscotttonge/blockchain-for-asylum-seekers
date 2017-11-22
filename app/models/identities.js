@@ -8,7 +8,8 @@ var identitySchema = new Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'applicants'
   },
-  accountAddress: String
+  accountAddress: String,
+  contractAddress: String
 }, {
     timestamps: true
 })
