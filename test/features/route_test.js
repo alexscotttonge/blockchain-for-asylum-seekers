@@ -16,10 +16,10 @@ describe('Home page', function() {
     assert.ok(this.browser.success);
   });
 
-  it('has a button to Sign up here !', function() {
-    assert(this.browser.text('a'), 'Sign up here !');
-    assert(this.browser.text('a'), 'login');
-    assert(this.browser.text('a'), 'logout');
+  it('has the relevant sign up links', function() {
+    this.browser.assert.link('a', 'Sign up here !', '/register');
+    this.browser.assert.link('a', 'login', '/login');
+    this.browser.assert.link('a', 'logout', '/logout');
   });
 
   // it('has a button to Sign up here !', function () {
