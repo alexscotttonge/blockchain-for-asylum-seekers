@@ -7,6 +7,9 @@
   <div>
     <p>Name: {{this.applicantName}}</p>
     <p>D.O.B.: {{this.applicantDob}}</p>
-    <button type="button">Verify</button>
+    <form method="post" action="/identities">
+      <input type="hidden" name="applicant" value="{{this._id}}">
+      <button type="submit">Verify</button>
+    </form>
   <div>
 {{/each}}
