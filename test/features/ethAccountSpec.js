@@ -28,7 +28,8 @@ describe('ethereum account', function () {
   })
 
   before(function (done) {
-    browser.pressButton('Verify', done);
+    this.timeout(5000)
+    browser.pressButton('Verify', done)
   })
 
   it('creates a new ethereum account', function (done) {
