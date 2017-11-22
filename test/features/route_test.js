@@ -1,6 +1,11 @@
-// var bodyParser = require('body-parser');
+'use strict';
 var Browser = require('zombie');
 var assert = require('assert');
+
+const http = require('http');
+const expect = require('chai').expect;
+const app = require('../../app/app');
+const mongoose = require('mongoose');
 
 
 describe('Home page', function() {
@@ -22,7 +27,16 @@ describe('Home page', function() {
     this.browser.assert.link('a', 'logout', '/logout');
   });
 
-  // it('has a button to Sign up here !', function () {
-  //     assert(this.browser.text('a'), 'Sign up here !');
-  // });
+  it('redirects to the register page when you click on signup', function(done) {
+    this.browser.clickLink('Sign up here !', done);
+
+  });
+
 });
+
+
+
+
+// it('has a button to Sign up here !', function () {
+//     assert(this.browser.text('a'), 'Sign up here !');
+// });
