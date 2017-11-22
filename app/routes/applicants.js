@@ -3,7 +3,6 @@ var router = express.Router();
 var mongoose = require('mongoose')
 var Applicant = mongoose.model('applicants');
 
-/* GET home page. */
 router.get('/new', isLoggedIn, function(req, res, next) {
   res.render('applicants/new');
 });

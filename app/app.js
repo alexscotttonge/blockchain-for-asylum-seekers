@@ -14,10 +14,8 @@ const identity = require('./models/identities');
 var index = require('./routes/index');
 var users = require('./routes/users');
 
-var login = require('./routes/login');
-var secret = require('./routes/secret');
-var register = require('./routes/register');
-var logout = require('./routes/logout');
+var sessions = require('./routes/sessions');
+var users = require('./routes/users');
 
 var mongoose = require("mongoose");
 var passport = require("passport");
@@ -25,11 +23,6 @@ var bodyParser = require("body-parser");
 var User  = require("./models/user");
 var LocalStrategy = require("passport-local");
 var passportLocalMongoose = require("passport-local-mongoose");
-
-// mongoose.connect("mongodb://localhost/auth_demo_block", {
-//   useMongoClient: true
-// });
-// mongoose.Promise = global.Promise;
 
 var applicants = require('./routes/applicants');
 var identities = require('./routes/identities');
@@ -69,15 +62,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('/users', users);
-
-app.use('/login', login);
-app.use('/secret', secret);
-app.use('/register', register);
-app.use('/logout', logout);
+app.use('/sessions', sessions);
 app.use('/applicants', applicants);
 app.use('/identities', identities);
-
-
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

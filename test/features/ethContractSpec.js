@@ -24,7 +24,14 @@ describe('blockchain identity contract', function () {
 
   before(function(done) {
     this.server = http.createServer(app).listen(3001);
-    browser.visit('/applicants', done);
+    browser.visit('/users/new', done);
+  })
+
+  before(function (done) {
+    browser
+    .fill('username','admin')
+    .fill('password','password')
+    .pressButton('Sign up', done);
   })
 
   before(function (done) {
