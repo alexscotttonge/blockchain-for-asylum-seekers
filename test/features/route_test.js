@@ -6,7 +6,7 @@ const http = require('http');
 const expect = require('chai').expect;
 const app = require('../../app/app');
 const mongoose = require('mongoose');
-
+var browser = new Browser();
 
 describe('Home page', function() {
 
@@ -28,7 +28,11 @@ describe('Home page', function() {
   });
 
   it('redirects to the register page when you click on signup', function(done) {
-    this.browser.clickLink('Sign up here !', done);
+    browser.visit("http://localhost:3000", function(err, b, status) {
+      browser.clickLink("login", function(err) {
+        assert.equal("http://localhost:3000/login", browser.location.href);
+      });
+    });
 
   });
 

@@ -26,6 +26,7 @@ describe('Home page', function() {
     assert(browser.text('a'), 'logout');
   });
 
+
   // it('has a button to Sign up here !', function () {
   //     assert(this.browser.text('a'), 'Sign up here !');
   // });
