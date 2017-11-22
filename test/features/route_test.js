@@ -1,7 +1,5 @@
 'use strict';
-var Browser = require('zombie');
-var assert = require('assert');
-
+const Browser = require('zombie');
 const http = require('http');
 const expect = require('chai').expect;
 const app = require('../../app/app');
@@ -10,25 +8,28 @@ const mongoose = require('mongoose');
 
 describe('Home page', function() {
 
+  Browser.localhost('example.com', 3001)
+  var browser = new Browser();
+
   before(function(done) {
-    this.browser = new Browser({
-      site: 'http://localhost:3000'
-    });
-    this.browser.visit('/', done);
-  });
+    this.server = http.createServer(app).listen(3001);
+    browser.visit('/', done);
+  })
+
 
   it('should display the index page', function() {
-    assert.ok(this.browser.success);
+    expect(browser.success);
   });
 
   it('has the relevant sign up links', function() {
-    this.browser.assert.link('a', 'Sign up here !', '/register');
-    this.browser.assert.link('a', 'login', '/login');
-    this.browser.assert.link('a', 'logout', '/logout');
+    expect(browser.assert.link('a', 'Sign up here !', '/register'));
+    expect(browser.assert.link('a', 'login', '/login'));
+    expect(browser.assert.link('a', 'logout', '/logout'));
   });
 
   it('redirects to the register page when you click on signup', function(done) {
-    this.browser.clickLink('Sign up here !', done);
+    browser.clickLink('.login', done);
+    expect(browser.html('body')).to.contain('Admin');
 
   });
 
