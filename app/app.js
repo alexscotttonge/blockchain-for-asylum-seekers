@@ -19,8 +19,6 @@ var secret = require('./routes/secret');
 var register = require('./routes/register');
 var logout = require('./routes/logout');
 
-
-
 var mongoose = require("mongoose");
 var passport = require("passport");
 var bodyParser = require("body-parser");
@@ -28,10 +26,10 @@ var User  = require("./models/user");
 var LocalStrategy = require("passport-local");
 var passportLocalMongoose = require("passport-local-mongoose");
 
-mongoose.connect("mongodb://localhost/auth_demo_block", {
-  useMongoClient: true
-});
-mongoose.Promise = global.Promise;
+// mongoose.connect("mongodb://localhost/auth_demo_block", {
+//   useMongoClient: true
+// });
+// mongoose.Promise = global.Promise;
 
 var applicants = require('./routes/applicants');
 var identities = require('./routes/identities');
