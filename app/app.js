@@ -11,11 +11,7 @@ var mongoose = require('mongoose');
 const applicant = require('./models/applicants');
 const identity = require('./models/identities');
 
-var index = require('./routes/index');
-var users = require('./routes/users');
-
-var sessions = require('./routes/sessions');
-var users = require('./routes/users');
+var routes = require('./routes');
 
 var mongoose = require("mongoose");
 var passport = require("passport");
@@ -23,10 +19,6 @@ var bodyParser = require("body-parser");
 var User  = require("./models/user");
 var LocalStrategy = require("passport-local");
 var passportLocalMongoose = require("passport-local-mongoose");
-
-var applicants = require('./routes/applicants');
-var identities = require('./routes/identities');
-
 
 var app = express();
 var env = app.get('env');
@@ -59,12 +51,8 @@ app.use(bodyParser.urlencoded({
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-
-app.use('/', index);
-app.use('/users', users);
-app.use('/sessions', sessions);
-app.use('/applicants', applicants);
-app.use('/identities', identities);
+app.use('/', routes);
+// app.use('/sessions', sessions);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
