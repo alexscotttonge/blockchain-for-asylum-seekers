@@ -23,9 +23,9 @@ describe('Home page', function() {
   });
 
   it('has the relevant sign up links', function() {
-    expect(browser.assert.link('a', 'Sign up here !', '/register'));
-    expect(browser.assert.link('a', 'login', '/login'));
-    expect(browser.assert.link('a', 'logout', '/logout'));
+    expect(browser.assert.link('a', 'Sign up here !', '/users/new'));
+    expect(browser.assert.link('a', 'login', '/sessions/new'));
+    expect(browser.assert.link('a', 'logout', '/'));
   });
 
   after(function(done) {

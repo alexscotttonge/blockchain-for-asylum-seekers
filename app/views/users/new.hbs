@@ -1,11 +1,13 @@
 <h1>{{title}}</h1>
-<form class="" action="/login" method="POST">
+
+<form action="/users" method="post">
   <input type="text" name="username" placeholder="username">
   <input type="password" name="password" placeholder="password">
-  <button>Login</button>
+  <button>Sign up</button>
 </form>
 
 <ul >
-     <li ><a class="register" href="/register">Sign up here !</a></li>
 
+     <li ><a href="/sessions/new">login</a></li>
+     <li ><a href="/logout">logout</a></li>
    </ul>

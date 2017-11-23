@@ -1,14 +1,14 @@
 <div class="add_new">
-    <a href="/applicants/new">Add new applicants</a>
+    <a href="/applications/new">Add new applicants</a>
 </div>
 
 
-{{#each applicants }}
+{{#each applications }}
   <div>
     <p>Name: {{this.applicantName}}</p>
     <p>D.O.B.: {{this.applicantDob}}</p>
-    <form method="post" action="/identities">
-      <input type="hidden" name="applicant" value="{{this._id}}">
+    <form method="post" action="/ethAccounts">
+      <input type="hidden" name="application" value="{{this._id}}">
       <button type="submit">Verify</button>
     </form>
   <div>

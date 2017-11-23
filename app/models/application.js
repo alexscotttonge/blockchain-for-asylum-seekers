@@ -3,11 +3,11 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-var applicantSchema = new Schema({
+var applicationSchema = new Schema({
   applicantName: String,
   applicantDob: String
 }, {
   timestamps: true
 });
 
-mongoose.model('applicants', applicantSchema)
+mongoose.model('application', applicationSchema)

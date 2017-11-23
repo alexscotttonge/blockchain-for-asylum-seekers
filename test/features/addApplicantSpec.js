@@ -17,7 +17,7 @@ describe('add applicant', function() {
   })
 
   before(function(done) {
-    browser.clickLink('Sign up here !', done)
+    browser.visit('/users/new', done);
   })
 
   before(function(done) {
@@ -28,15 +28,7 @@ describe('add applicant', function() {
   })
 
   before(function(done) {
-    browser
-      .fill('username', 'Josephone')
-      .fill('password', 'HelloWorld')
-      .pressButton('Login', done)
-  })
-
-  before(function(done) {
-    browser
-      .visit('/applicants/new', done);
+    browser.visit('/applications/new', done);
   })
 
   before(function(done) {

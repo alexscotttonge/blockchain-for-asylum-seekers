@@ -8,16 +8,10 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 
-const applicant = require('./models/applicants');
-const identity = require('./models/identities');
+const applicant = require('./models/application');
+const ethAccount = require('./models/ethAccount');
 
-var index = require('./routes/index');
-var users = require('./routes/users');
-
-var login = require('./routes/login');
-var secret = require('./routes/secret');
-var register = require('./routes/register');
-var logout = require('./routes/logout');
+var routes = require('./routes');
 
 var mongoose = require("mongoose");
 var passport = require("passport");
@@ -25,15 +19,6 @@ var bodyParser = require("body-parser");
 var User  = require("./models/user");
 var LocalStrategy = require("passport-local");
 var passportLocalMongoose = require("passport-local-mongoose");
-
-// mongoose.connect("mongodb://localhost/auth_demo_block", {
-//   useMongoClient: true
-// });
-// mongoose.Promise = global.Promise;
-
-var applicants = require('./routes/applicants');
-var identities = require('./routes/identities');
-
 
 var app = express();
 var env = app.get('env');
@@ -66,18 +51,8 @@ app.use(bodyParser.urlencoded({
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-
-app.use('/', index);
-app.use('/users', users);
-
-app.use('/login', login);
-app.use('/secret', secret);
-app.use('/register', register);
-app.use('/logout', logout);
-app.use('/applicants', applicants);
-app.use('/identities', identities);
-
-
+app.use('/', routes);
+// app.use('/sessions', sessions);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
