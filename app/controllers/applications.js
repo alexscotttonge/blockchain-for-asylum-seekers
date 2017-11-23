@@ -2,6 +2,7 @@
 
 var mongoose = require('mongoose')
 var Application = mongoose.model('application');
+var EthAccount = mongoose.model('ethAccount')
 
 module.exports = {
 
@@ -25,6 +26,11 @@ module.exports = {
       .find()
       .exec(function(err, doc) {
         res.render('applications/index', { applications: doc });
+      })
+    EthAccount
+      .find()
+      .exec(function(err, doc) {
+        res.render('applications/index', { ethAccount: doc });
       })
   }
 
