@@ -22,7 +22,7 @@ describe('add applicant', function() {
   })
 
   it('redirects to the register page when you click on signup', function() {
-    expect(browser.html('body')).to.contain('Sign Up form');
+    expect(browser.html('body')).to.contain('Sign up');
   })
 
   after(function(done) {
