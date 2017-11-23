@@ -11,10 +11,10 @@ module.exports = {
   },
 
   create: passport.authenticate("local", {
-    successRedirect: "/applications/new",
-    failureRedirect: "/login"
+    successRedirect: "/applications",
+    failureRedirect: "/sessions/new"
   }), function(req, res) {
-  
+
   },
 
   delete: function(req, res, next) {
