@@ -51,9 +51,16 @@ app.use(bodyParser.urlencoded({
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', routes);
-// app.use('/sessions', sessions);
+app.use(function(req, res, next) {
+  if (req.body._method == 'PUT') {
+    req.method = 'PUT';
+    req.url = req.path;
+  }
+  next();
+})
 
+app.use('/', routes);
+  
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');

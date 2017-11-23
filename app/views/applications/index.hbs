@@ -7,8 +7,7 @@
   <div>
     <p>Name: {{this.applicantName}}</p>
     <p>D.O.B.: {{this.applicantDob}}</p>
-    <form method="post" action="/ethAccounts">
-      <input type="hidden" name="application" value="{{this._id}}">
+    <form method="get" action="/applications/{{this.id}}">
       <button type="submit">Verify</button>
       {{!-- <button class="btn waves-effect waves-light" type="submit" name="action">
         Verify<i class="material-icons right">done</i>
