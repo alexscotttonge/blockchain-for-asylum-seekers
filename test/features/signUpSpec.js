@@ -17,29 +17,12 @@ describe('add applicant', function() {
   })
 
   before(function(done) {
-    browser.visit('/users/new', done);
-  })
-
-  before(function(done) {
     browser
-      .fill('username', 'Josephine')
-      .fill('password', 'HelloWorld')
-      .pressButton('Sign up', done)
+      .clickLink('Sign up here !', done);
   })
 
-  before(function(done) {
-    browser.visit('/applications/new', done);
-  })
-
-  before(function(done) {
-    browser
-      .fill('applicantName','John Doe')
-      .fill('applicantDob','01/01/1977')
-      .pressButton('Add', done);
-  })
-
-  it('adds a new applicant', function(){
-    expect(browser.html('body')).to.contain('John Doe');
+  it('redirects to the register page when you click on signup', function() {
+    expect(browser.html('body')).to.contain('Sign Up form');
   })
 
   after(function(done) {
