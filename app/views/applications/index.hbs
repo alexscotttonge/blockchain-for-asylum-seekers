@@ -1,5 +1,5 @@
 <div class="add_new">
-  <a href="/applicants/new" class="btn-large waves-effect waves-light teal lighten-1">Add new applicants</a>
+    <a href="/applicants/new">Add new applicants</a>
 </div>
 
 
@@ -9,9 +9,7 @@
     <p>D.O.B.: {{this.applicantDob}}</p>
     <form method="post" action="/ethAccounts">
       <input type="hidden" name="application" value="{{this._id}}">
-      <button class="btn waves-effect waves-light" type="submit" name="action">
-        Verify<i class="material-icons right">done</i>
-      </button>
+      <button type="submit">Verify</button>
     </form>
   <div>
 {{/each}}
