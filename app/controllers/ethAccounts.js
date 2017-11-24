@@ -18,17 +18,9 @@ module.exports = {
     }, async function(err, isMatch, app) {
       if (isMatch === true) {
         ethAccount = await generateSecureId(app)
-        res.format({
-          'application/json': function () {
-            res.send({ account: ethAccount });
-          }
-        })
+        res.render({ account: ethAccount});
       } else {
-        res.format({
-          'application/json': function () {
-            res.send({ message: 'no match, soz' });
-          }
-        })
+        res.status(500).json({ message: 'Secure ID could not be generated'});
       }
     })
   }
