@@ -1,21 +1,23 @@
 
-<div class="row">
-  <div class="col s12 m4 offset-m4" class="newApp">
-    <div class="add_new">
-        <a href="/applications/new"><button class="btn-large waves-effect waves-light teal lighten-1" >Add new applicants</button></a>
+<div class="row" class="new-app">
+  <div class="col s12 m4 offset-m4" class="content">
+    <div>
     </div>
   </div>
 </div>
 
 <div class="row">
   <div class="col s12 m4 offset-m4">
-{{#each applications }}
-    <form method="post" action="/ethAccounts">
-      <p>Name: {{this.applicantName}}</p>
-      <p>D.O.B.: {{this.applicantDob}}</p>
-      <input type="hidden" name="application" value="{{this._id}}">
-      <input type="submit" name="Verify" value="Verify" class="btn-large waves-effect waves-light teal lighten-1" />
-    </form>
-{{/each}}
+    <div class="content">
+        <a href="/applications/new"><button class="btn-large waves-effect waves-light teal lighten-1" >Add new applicants</button></a>
+      {{#each applications }}
+        <form method="post" action="/ethAccounts">
+          <p>Name: {{this.applicantName}}</p>
+          <p>D.O.B.: {{this.applicantDob}}</p>
+          <input type="hidden" name="application" value="{{this._id}}">
+          <input type="submit" name="Verify" value="Verify" class="btn-large waves-effect waves-light teal lighten-1" />
+        </form>
+      {{/each}}
+    </div>
   </div>
 </div>

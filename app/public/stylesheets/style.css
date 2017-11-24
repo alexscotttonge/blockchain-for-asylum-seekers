@@ -57,10 +57,18 @@ footer.page-footer {
 }
 
 form {
-  margin-top: 70px;
+  margin-top: 20%;
   margin-bottom: 70px;
 }
 
-.newApp {
+.new-app {
   margin-top: 700px;
+}
+
+.content {
+  text-align: center;
+}
+
+.content p {
+  text-align: center;
 }
