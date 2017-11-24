@@ -22,7 +22,7 @@ module.exports = {
       });
       try {
         await newEthAccount.save()
-        es.redirect('/applications/' + app._id);
+        res.redirect('/applications/' + app._id);
       } catch (err) {
         res.render('applications');
       }

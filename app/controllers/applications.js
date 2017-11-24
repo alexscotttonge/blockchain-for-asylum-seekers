@@ -3,6 +3,7 @@
 var mongoose = require('mongoose')
 var Application = mongoose.model('application');
 var EthAccount = mongoose.model('ethAccount');
+var QRCode = require('qrcode')
 
 module.exports = {
 
@@ -34,7 +35,9 @@ module.exports = {
       EthAccount.findOne({
         applicationId: app
       }).exec(function (err, acc) {
-        res.render('applications/show', { app: app, acc: acc })
+        QRCode.toDataURL(acc.accountAddress, function (err, url) {
+          res.render('applications/show', { app: app, acc: url })
+        })
       })
     })
   }
