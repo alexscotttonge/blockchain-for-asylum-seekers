@@ -29,7 +29,7 @@ module.exports = {
   },
 
   show: function (req, res, next) {
-    Application.findById(req.params.ID, function (err, app) { //needs header params id
+    Application.findById(req.params.ID, function (err, app) {
       res.render('applications/show', { app: app })
     })
   },

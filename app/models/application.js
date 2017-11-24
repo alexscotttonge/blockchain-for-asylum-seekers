@@ -19,17 +19,26 @@ applicationSchema.methods.verify = function(text, cb) {
   bcrypt.genSalt(SALT_WORK_FACTOR, function(err, salt) {
     bcrypt.hash(text, salt, function(err, hash) {
       application.passphrase = hash;
-      application.verified = true
-      cb();
+      application.verified = true;
+      console.log(application)
+      application
+      .save()
+      .then((item) => cb())
     });
   });
+  console.log(application)
 };
 
-applicationSchema.methods.comparePassphrase = function (candidatePassphrase, cb) {
-  var application = this;
-  bcrypt.compare(candidatePassphrase, application.passphrase, function(err, isMatch) {
-    cb(null, isMatch);
-  });
+applicationSchema.statics.comparePassphrase = function (params, cb) {
+  this.model('application').findOne({
+    applicantName: params.name,
+    applicantDob: params.dob,
+  }).exec(function (err, app) {
+    if (err || !app) return cb(null, false);
+    bcrypt.compare(params.passphrase, app.passphrase, function(err, isMatch) {
+      cb(null, isMatch, app);
+    });   
+  })
 };
 
 mongoose.model('application', applicationSchema)

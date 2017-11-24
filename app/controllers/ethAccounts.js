@@ -10,27 +10,49 @@ const solc = require('solc');
 module.exports = {
 
   create: function (req, res, next) {
-    var application;
-    var contract;
-    var account;
-    Application.findById(req.body.application, async function (err, app) {
-      application = app
-      account = await createAccount();
-      contract = await deployContract(account, application);  
-      var newEthAccount = new EthAccount({
-        applicationId: application,
-        accountAddress: account,
-        contractAddress: contract
-      });
-      newEthAccount.save()
-        .then(item => {
-          res.redirect('/applications');
+    var ethAccount;
+    Application.comparePassphrase({
+      name: req.body.name,
+      dob: req.body.dob,
+      passphrase: req.body.passphrase
+    }, async function(err, isMatch, app) {
+      if (isMatch === true) {
+        ethAccount = await generateSecureId(app)
+        res.format({
+          'application/json': function () {
+            res.send({ account: ethAccount });
+          }
         })
-        .catch(err => {
-          res.render('applications');
+      } else {
+        res.format({
+          'application/json': function () {
+            res.send({ message: 'no match, soz' });
+          }
         })
+      }
     })
   }
+
+}
+
+async function generateSecureId(application) {
+  var contract;
+  var account;
+  account = await createAccount();
+  contract = await deployContract(account, application);  
+  var newEthAccount = new EthAccount({
+    applicationId: application,
+    accountAddress: account,
+    contractAddress: contract
+  });
+  newEthAccount.save()
+    .then(item => {
+      return account;
+    })
+    .catch(err => {
+      return err;
+    })
+  
 }
 
 function createAccount() {
