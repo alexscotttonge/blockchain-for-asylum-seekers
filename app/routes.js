@@ -11,15 +11,16 @@ const sessions = require('./controllers/sessions');
 router.get('/', (req, res, next) => { res.render('index'); });
 
 router.get('/sessions/new', sessions.new);
-router.post('/sessions', sessions.create);
 router.get('/sessions/logout', sessions.delete);
+router.post('/sessions', sessions.create);
 
 router.get('/users/new', users.new);
 router.post('/users', users.create);
 
 router.get('/applications', isLoggedIn, applications.index);
-router.post('/applications', isLoggedIn, applications.create);
 router.get('/applications/new', isLoggedIn, applications.new);
+router.get('/applications/:ID', isLoggedIn, applications.show);
+router.post('/applications', isLoggedIn, applications.create);
 
 router.post('/ethAccounts', ethAccounts.create);
 
