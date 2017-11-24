@@ -1,6 +1,7 @@
 nav ul a,
 nav .brand-logo {
   color: #444;
+  margin-left: 20px;
 }
 
 p {
@@ -53,4 +54,13 @@ p {
 
 footer.page-footer {
   margin: 0;
+}
+
+form {
+  margin-top: 70px;
+  margin-bottom: 70px;
+}
+
+.newApp {
+  margin-top: 700px;
 }
