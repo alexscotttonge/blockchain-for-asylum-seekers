@@ -35,7 +35,7 @@ describe('ethereum account', function () {
   })
 
   before(function (done) {
-    this.timeout(5000)
+    this.timeout(8000)
     browser.pressButton('Verify', done)
   })
 

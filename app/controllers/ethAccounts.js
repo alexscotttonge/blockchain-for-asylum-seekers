@@ -24,7 +24,7 @@ module.exports = {
       });
       newEthAccount.save()
         .then(item => {
-          res.redirect('/applications');
+          res.redirect('/applications/' + application._id);
         })
         .catch(err => {
           res.render('applications');

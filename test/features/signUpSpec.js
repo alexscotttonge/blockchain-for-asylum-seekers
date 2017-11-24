@@ -18,7 +18,7 @@ describe('add applicant', function() {
 
   before(function(done) {
     browser
-      .clickLink('Sign up here !', done);
+      .clickLink('Sign Up', done);
   })
 
   it('redirects to the register page when you click on signup', function() {
