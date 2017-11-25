@@ -71,6 +71,6 @@ npm test
 
 ## Team Members
 - [Ainsley Chang](https://github.com/ainsleybc)
-- Alex Scott-Tonge
+- [Alex Scott-Tonge](https://github.com/alexscotttonge)
 - [Canace Wong](https://github.com/CWongdabest)
 - [Pablo Vidal](https://github.com/Pablo123GitHub)
